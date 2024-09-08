@@ -1,13 +1,13 @@
 package org.ust.lms.m4.assignment1;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class Task {
 
 	private String description;
-	private Date dueDate;
+	private LocalDate dueDate;
 
-	public Task(String description, Date dueDate) {
+	public Task(String description, LocalDate dueDate) {
 
 		this.description = description;
 		this.dueDate = dueDate;
@@ -21,11 +21,11 @@ public class Task {
 		this.description = description;
 	}
 
-	public Date getDueDate() {
+	public LocalDate getDueDate() {
 		return dueDate;
 	}
 
-	public void setDueDate(Date dueDate) {
+	public void setDueDate(LocalDate dueDate) {
 		this.dueDate = dueDate;
 	}
 

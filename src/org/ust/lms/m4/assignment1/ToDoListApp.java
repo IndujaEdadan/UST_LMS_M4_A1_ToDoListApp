@@ -1,5 +1,6 @@
 package org.ust.lms.m4.assignment1;
 
+import java.time.LocalDate;
 import java.util.Scanner;
 
 /*Create a Java class to represent a task (description, due date).
@@ -7,6 +8,9 @@ Use arrays to store tasks.
 Implement operations like adding, removing, and displaying tasks
 */
 public class ToDoListApp {
+	private static final int MAX_SIZE = 10;
+	private static Task[] tasks = new Task[MAX_SIZE];
+	private static int taskCount = 0;
 
 	public static void main(String[] args) {
 
@@ -20,10 +24,10 @@ public class ToDoListApp {
 
 				switch (choice) {
 				case 1:
-					addTask();
+					addTask(scanner);
 					break;
 				case 2:
-					removeTask();
+					removeTask(scanner);
 					break;
 				case 3:
 					displayTask();
@@ -47,11 +51,25 @@ public class ToDoListApp {
 
 	}
 
-	private static void removeTask() {
+	private static void removeTask(Scanner scanner) {
 
 	}
 
-	private static void addTask() {
+	private static void addTask(Scanner scanner) {
+
+		if (taskCount >= MAX_SIZE) {
+			System.out.println("Task list is full. Cannot add more tasks.");
+			return;
+		}
+		System.out.println("Enter task description");
+		String description = scanner.next();
+
+		System.out.println("Enter due date");
+		LocalDate dueDate = LocalDate.parse(scanner.next());
+
+		tasks[taskCount] = new Task(description, dueDate);
+		taskCount++;
+		System.out.println("Task Added !!");
 
 	}
 
