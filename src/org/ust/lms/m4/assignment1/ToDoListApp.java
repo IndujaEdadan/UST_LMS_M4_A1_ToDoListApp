@@ -19,7 +19,7 @@ public class ToDoListApp {
 			int choice;
 			do {
 				System.out.println("Enter the choice :");
-				System.out.println("1. Add Tasks \n  2.Remove Tasks \n  3.Display Tasks \n 4.Exit");
+				System.out.println(" 1. Add Tasks \n 2.Remove Tasks \n 3.Display Tasks \n 4.Exit");
 				choice = scanner.nextInt();
 
 				switch (choice) {
@@ -33,11 +33,13 @@ public class ToDoListApp {
 					displayTask();
 					break;
 				case 4:
+					System.out.println("Ended !!");
 					break;
 				default:
 					System.out.println("Invalid Choice !!");
 
 				}
+				System.out.println();
 
 			} while (choice != 4);
 
@@ -49,9 +51,24 @@ public class ToDoListApp {
 
 	private static void displayTask() {
 
+		if (taskCount == 0) {
+			System.out.println("Task List is empty.");
+			return;
+		}
+
+		System.out.println("Tasks :");
+		for (int i = 0; i < taskCount; i++) {
+			System.out.println(i + 1 + " : " + tasks[i]);
+		}
+
 	}
 
 	private static void removeTask(Scanner scanner) {
+
+		if (taskCount == 0) {
+			System.out.println("Task List is empty.");
+			return;
+		}
 
 	}
 
@@ -64,7 +81,7 @@ public class ToDoListApp {
 		System.out.println("Enter task description");
 		String description = scanner.next();
 
-		System.out.println("Enter due date");
+		System.out.println("Enter due date (yyyy-mm-dd)");
 		LocalDate dueDate = LocalDate.parse(scanner.next());
 
 		tasks[taskCount] = new Task(description, dueDate);
