@@ -58,7 +58,7 @@ public class ToDoListApp {
 
 		System.out.println("Tasks :");
 		for (int i = 0; i < taskCount; i++) {
-			System.out.println(i + 1 + " : " + tasks[i]);
+			System.out.println(i + " : " + tasks[i]);
 		}
 
 	}
@@ -69,6 +69,23 @@ public class ToDoListApp {
 			System.out.println("Task List is empty.");
 			return;
 		}
+
+		System.out.println("Enter the task number to remove ");
+		System.out.println();
+		displayTask();
+		int index = scanner.nextInt();
+
+		if (index < 0 || index >= taskCount) {
+			System.out.println("Invalid Index .");
+			return;
+		}
+
+		for (int i = index; i < taskCount - 1; i++) {
+			tasks[i] = tasks[i + 1];
+		}
+		tasks[taskCount - 1] = null;
+		taskCount--;
+		System.out.println("Task Removed!!");
 
 	}
 
